@@ -2,49 +2,49 @@
 
 @layer base {
   :root {
-    --primary-navy: #12263A;
-    --secondary-navy: #1B344D;
-    --teal: #18B6A4;
-    --deep-teal: #0D8F82;
-    --warm-amber: #F4B942;
-    --coral: #EF8069;
-    --danger-red: #D9534F;
-    --bg-main: #F4F7F8;
-    --card-bg: #FFFFFF;
-    --text-primary: #172033;
-    --text-secondary: #617080;
-    --border-color: #DCE4E8;
+    --bg-dusky: #F5F1E8;
+    --card-ivory: #FBF9F4;
+    --border-sand: #E7DED0;
+    --copper-primary: #B86B45;
+    --copper-dark: #925238;
+    --warm-gold: #C59A4A;
+    --muted-ochre: #A98245;
+    --charcoal-text: #252321;
+    --warm-gray: #6F6961;
+    --terracotta: #C9674B;
+    --deep-terracotta: #9F4937;
+    --safe-olive: #8E9274;
   }
 
   body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-dusky);
+    color: var(--charcoal-text);
+    font-family: 'Manrope', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 }
 
-/* Custom Scrollbars */
+/* Custom Scrollbars in Warm Sand */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F0F4F6;
+  background: #EFE9DE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C4D1D9;
+  background: #D5C9B8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9AAEB9;
+  background: #B86B45;
 }
 
 /* Leaflet container fixes */
 .leaflet-container {
   width: 100%;
   height: 100%;
-  background: #E5ECF0;
-  font-family: 'Inter', sans-serif !important;
+  background: #EFEAE0;
+  font-family: 'Manrope', sans-serif !important;
   z-index: 10;
 }
 
@@ -53,7 +53,7 @@
   transition: fill-opacity 0.2s ease, stroke-width 0.2s ease;
 }
 
-/* Smooth badge glow effects */
+/* Subtle pulse animation */
 .badge-pulse {
   animation: pulse-glow 2.5s infinite;
 }

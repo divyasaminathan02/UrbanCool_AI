@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useScenario } from '../context/ScenarioContext';
-import { UserRole, ScenarioType } from '../types';
 import {
   Settings,
   Sliders,
   Bell,
   Shield,
-  User,
   CheckCircle2,
   Save,
-  RotateCcw,
-  Sparkles
+  RotateCcw
 } from 'lucide-react';
 
 export const SettingsPage: React.FC = () => {
@@ -51,19 +48,23 @@ export const SettingsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#12263A] tracking-tight flex items-center gap-2">
-            <Settings className="w-6 h-6 text-[#18B6A4]" />
-            <span>System & Municipal Advisory Settings</span>
-          </h1>
-          <p className="text-xs text-[#617080] mt-0.5">
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-extrabold text-[#252321] tracking-tight">
+              System & Municipal Advisory Settings
+            </h1>
+            <span className="text-[11px] font-bold px-2 py-0.5 bg-[#B86B45]/10 text-[#B86B45] border border-[#B86B45]/25 rounded-md uppercase tracking-wider">
+              Control Center
+            </span>
+          </div>
+          <p className="text-xs text-[#6F6961] mt-0.5">
             Configure thermal thresholds, multi-criteria risk weightings, and simulated broadcast webhooks
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           {savedSuccess && (
-            <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 flex items-center gap-1.5 animate-in fade-in">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <span className="text-xs font-bold text-[#252321] bg-[#8E9274]/15 px-3 py-1.5 rounded-xl border border-[#8E9274]/30 flex items-center gap-1.5 animate-in fade-in">
+              <CheckCircle2 className="w-4 h-4 text-[#8E9274]" />
               <span>Configurations Saved!</span>
             </span>
           )}
@@ -72,20 +73,20 @@ export const SettingsPage: React.FC = () => {
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* Risk Thresholds Card */}
-        <div className="bg-white border border-[#DCE4E8] rounded-2xl p-6 shadow-xs space-y-4">
-          <div className="border-b border-[#DCE4E8] pb-3">
-            <h2 className="text-sm font-bold text-[#12263A] uppercase tracking-wider flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-[#18B6A4]" />
+        <div className="bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="border-b border-[#E7DED0] pb-3">
+            <h2 className="text-xs font-bold text-[#252321] uppercase tracking-wider flex items-center gap-2">
+              <Sliders className="w-4 h-4 text-[#B86B45]" />
               Heat Risk Classification Thresholds (0–100 Scale)
             </h2>
-            <p className="text-xs text-[#617080] mt-0.5">
+            <p className="text-xs text-[#6F6961] mt-0.5">
               Set trigger levels for automated municipal advisory dispatches
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div>
-              <label className="block font-bold text-[#D9534F] uppercase tracking-wider mb-1">
+              <label className="block font-bold text-[#9F4937] uppercase tracking-wider mb-1">
                 Extreme Risk Cutoff
               </label>
               <div className="flex items-center gap-2">
@@ -95,15 +96,15 @@ export const SettingsPage: React.FC = () => {
                   max="98"
                   value={extremeThreshold}
                   onChange={(e) => setExtremeThreshold(Number(e.target.value))}
-                  className="w-full p-2.5 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-mono font-bold text-sm"
+                  className="w-full p-2.5 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-mono font-bold text-sm text-[#252321] focus:outline-hidden focus:border-[#B86B45]"
                 />
-                <span className="text-[#617080] font-bold">/ 100</span>
+                <span className="text-[#6F6961] font-bold">/ 100</span>
               </div>
-              <span className="text-[10px] text-[#617080] mt-1 block">Triggers instant water tanker fleet</span>
+              <span className="text-[10px] text-[#6F6961] mt-1 block">Triggers instant water tanker fleet</span>
             </div>
 
             <div>
-              <label className="block font-bold text-[#C9543C] uppercase tracking-wider mb-1">
+              <label className="block font-bold text-[#C9674B] uppercase tracking-wider mb-1">
                 Very High Risk Cutoff
               </label>
               <div className="flex items-center gap-2">
@@ -113,15 +114,15 @@ export const SettingsPage: React.FC = () => {
                   max="89"
                   value={veryHighThreshold}
                   onChange={(e) => setVeryHighThreshold(Number(e.target.value))}
-                  className="w-full p-2.5 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-mono font-bold text-sm"
+                  className="w-full p-2.5 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-mono font-bold text-sm text-[#252321] focus:outline-hidden focus:border-[#B86B45]"
                 />
-                <span className="text-[#617080] font-bold">/ 100</span>
+                <span className="text-[#6F6961] font-bold">/ 100</span>
               </div>
-              <span className="text-[10px] text-[#617080] mt-1 block">Triggers cooling shelter activations</span>
+              <span className="text-[10px] text-[#6F6961] mt-1 block">Triggers cooling shelter activations</span>
             </div>
 
             <div>
-              <label className="block font-bold text-[#B88114] uppercase tracking-wider mb-1">
+              <label className="block font-bold text-[#C59A4A] uppercase tracking-wider mb-1">
                 High Risk Cutoff
               </label>
               <div className="flex items-center gap-2">
@@ -131,23 +132,23 @@ export const SettingsPage: React.FC = () => {
                   max="79"
                   value={highThreshold}
                   onChange={(e) => setHighThreshold(Number(e.target.value))}
-                  className="w-full p-2.5 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-mono font-bold text-sm"
+                  className="w-full p-2.5 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-mono font-bold text-sm text-[#252321] focus:outline-hidden focus:border-[#B86B45]"
                 />
-                <span className="text-[#617080] font-bold">/ 100</span>
+                <span className="text-[#6F6961] font-bold">/ 100</span>
               </div>
-              <span className="text-[10px] text-[#617080] mt-1 block">Triggers targeted worker SMS</span>
+              <span className="text-[10px] text-[#6F6961] mt-1 block">Triggers targeted worker SMS</span>
             </div>
           </div>
         </div>
 
         {/* Multi-Criteria Weightings */}
-        <div className="bg-white border border-[#DCE4E8] rounded-2xl p-6 shadow-xs space-y-4">
-          <div className="border-b border-[#DCE4E8] pb-3">
-            <h2 className="text-sm font-bold text-[#12263A] uppercase tracking-wider flex items-center gap-2">
-              <Shield className="w-4 h-4 text-[#18B6A4]" />
+        <div className="bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="border-b border-[#E7DED0] pb-3">
+            <h2 className="text-xs font-bold text-[#252321] uppercase tracking-wider flex items-center gap-2">
+              <Shield className="w-4 h-4 text-[#B86B45]" />
               Multi-Criteria Risk Score Formulation Weights
             </h2>
-            <p className="text-xs text-[#617080] mt-0.5">
+            <p className="text-xs text-[#6F6961] mt-0.5">
               Weighting proportions for temperature intensity, environmental canopy, and population exposure (Total = 100%)
             </p>
           </div>
@@ -155,8 +156,8 @@ export const SettingsPage: React.FC = () => {
           <div className="space-y-4 text-xs">
             <div>
               <div className="flex justify-between font-medium mb-1">
-                <span>Thermal Intensity & Anomaly Factor</span>
-                <span className="font-mono font-bold">{tempWeight}%</span>
+                <span className="text-[#252321]">Thermal Intensity & Anomaly Factor</span>
+                <span className="font-mono font-bold text-[#B86B45]">{tempWeight}%</span>
               </div>
               <input
                 type="range"
@@ -164,14 +165,14 @@ export const SettingsPage: React.FC = () => {
                 max="60"
                 value={tempWeight}
                 onChange={(e) => setTempWeight(Number(e.target.value))}
-                className="w-full accent-[#18B6A4] cursor-pointer"
+                className="w-full accent-[#B86B45] cursor-pointer"
               />
             </div>
 
             <div>
               <div className="flex justify-between font-medium mb-1">
-                <span>Vegetation & Built-up Land Cover Factor (NDVI / Built Ratio)</span>
-                <span className="font-mono font-bold">{canopyWeight}%</span>
+                <span className="text-[#252321]">Vegetation & Built-up Land Cover Factor (NDVI / Built Ratio)</span>
+                <span className="font-mono font-bold text-[#B86B45]">{canopyWeight}%</span>
               </div>
               <input
                 type="range"
@@ -179,14 +180,14 @@ export const SettingsPage: React.FC = () => {
                 max="50"
                 value={canopyWeight}
                 onChange={(e) => setCanopyWeight(Number(e.target.value))}
-                className="w-full accent-[#18B6A4] cursor-pointer"
+                className="w-full accent-[#B86B45] cursor-pointer"
               />
             </div>
 
             <div>
               <div className="flex justify-between font-medium mb-1">
-                <span>Human Exposure & Vulnerable Demographics</span>
-                <span className="font-mono font-bold">{popWeight}%</span>
+                <span className="text-[#252321]">Human Exposure & Vulnerable Demographics</span>
+                <span className="font-mono font-bold text-[#B86B45]">{popWeight}%</span>
               </div>
               <input
                 type="range"
@@ -194,31 +195,31 @@ export const SettingsPage: React.FC = () => {
                 max="40"
                 value={popWeight}
                 onChange={(e) => setPopWeight(Number(e.target.value))}
-                className="w-full accent-[#18B6A4] cursor-pointer"
+                className="w-full accent-[#B86B45] cursor-pointer"
               />
             </div>
           </div>
         </div>
 
         {/* Operations & Dispatch Settings */}
-        <div className="bg-white border border-[#DCE4E8] rounded-2xl p-6 shadow-xs space-y-4">
-          <div className="border-b border-[#DCE4E8] pb-3">
-            <h2 className="text-sm font-bold text-[#12263A] uppercase tracking-wider flex items-center gap-2">
-              <Bell className="w-4 h-4 text-[#18B6A4]" />
+        <div className="bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="border-b border-[#E7DED0] pb-3">
+            <h2 className="text-xs font-bold text-[#252321] uppercase tracking-wider flex items-center gap-2">
+              <Bell className="w-4 h-4 text-[#B86B45]" />
               Broadcast & Emergency Dispatch Integration
             </h2>
           </div>
 
           <div className="space-y-3 text-xs">
             <div>
-              <label className="block font-bold text-[#172033] mb-1">
+              <label className="block font-bold text-[#252321] mb-1">
                 Citizen Heat Warning Webhook Target (Simulated)
               </label>
               <input
                 type="url"
                 value={smsWebhook}
                 onChange={(e) => setSmsWebhook(e.target.value)}
-                className="w-full p-2.5 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-mono text-xs focus:outline-hidden"
+                className="w-full p-2.5 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-mono text-xs text-[#252321] focus:outline-hidden focus:border-[#B86B45]"
               />
             </div>
 
@@ -228,10 +229,10 @@ export const SettingsPage: React.FC = () => {
                 id="autoTanker"
                 checked={tankerDispatchAuto}
                 onChange={(e) => setTankerDispatchAuto(e.target.checked)}
-                className="w-4 h-4 accent-[#18B6A4] rounded cursor-pointer"
+                className="w-4 h-4 accent-[#B86B45] rounded cursor-pointer"
               />
-              <label htmlFor="autoTanker" className="font-medium text-[#172033] cursor-pointer">
-                Auto-generate water tanker dispatches for grid cells reaching Extreme (&ge; 90) risk
+              <label htmlFor="autoTanker" className="font-medium text-[#252321] cursor-pointer">
+                Auto-generate water tanker dispatches for grid cells reaching Extreme (≥ 90) risk
               </label>
             </div>
           </div>
@@ -242,7 +243,7 @@ export const SettingsPage: React.FC = () => {
           <button
             type="button"
             onClick={handleReset}
-            className="px-4 py-2.5 bg-[#F4F7F8] hover:bg-[#EAEFF2] text-[#617080] font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-4 py-2.5 bg-[#F5F1E8] hover:bg-[#EAE0D0] text-[#6F6961] hover:text-[#252321] font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer border border-[#E7DED0]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset to Defaults</span>
@@ -250,9 +251,9 @@ export const SettingsPage: React.FC = () => {
 
           <button
             type="submit"
-            className="px-6 py-2.5 bg-[#12263A] hover:bg-[#1B344D] text-white font-bold text-xs rounded-xl shadow-md shadow-[#12263A]/20 flex items-center gap-2 transition-all cursor-pointer"
+            className="px-6 py-2.5 bg-[#B86B45] hover:bg-[#925238] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-2 transition-all cursor-pointer"
           >
-            <Save className="w-4 h-4 text-[#18B6A4]" />
+            <Save className="w-4 h-4 text-[#F5F1E8]" />
             <span>Save Configurations</span>
           </button>
         </div>
@@ -260,3 +261,4 @@ export const SettingsPage: React.FC = () => {
     </div>
   );
 };
+

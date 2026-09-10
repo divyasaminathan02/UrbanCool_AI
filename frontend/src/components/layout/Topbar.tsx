@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import {
   MapPin,
   Clock,
-  Activity,
-  Bell,
-  UserCheck,
   ChevronDown,
   Sparkles,
-  Shield,
-  Layers,
-  Zap
+  Zap,
+  Activity
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useScenario } from '../../context/ScenarioContext';
@@ -22,9 +18,9 @@ export const Topbar: React.FC = () => {
   const [showScenarioMenu, setShowScenarioMenu] = useState(false);
 
   const scenarioLabels: Record<ScenarioType, { label: string; badge: string; color: string }> = {
-    normal: { label: 'Normal Day', badge: 'Baseline 34.2°C', color: 'text-[#0D8F82] bg-[#18B6A4]/15 border-[#18B6A4]/40' },
-    heatwave: { label: 'Heatwave Event', badge: '+3.9°C Anomaly', color: 'text-[#C9543C] bg-[#EF8069]/15 border-[#EF8069]/40' },
-    extreme: { label: 'Extreme Heat', badge: '+4.8°C Emergency', color: 'text-[#D9534F] bg-[#D9534F]/20 border-[#D9534F]/40' },
+    normal: { label: 'Normal Day', badge: 'Baseline 34.2°C', color: 'text-[#8E6A26] bg-[#C59A4A]/15 border-[#C59A4A]/40' },
+    heatwave: { label: 'Heatwave Event', badge: '+3.9°C Anomaly', color: 'text-[#A0462C] bg-[#C9674B]/15 border-[#C9674B]/40' },
+    extreme: { label: 'Extreme Heat', badge: '+4.8°C Emergency', color: 'text-[#9F4937] bg-[#9F4937]/20 border-[#9F4937]/45' },
   };
 
   const rolesList: Array<{ role: UserRole; title: string; dept: string }> = [
@@ -36,39 +32,38 @@ export const Topbar: React.FC = () => {
   ];
 
   return (
-    <header className="h-16 bg-white border-b border-[#DCE4E8] px-6 flex items-center justify-between sticky top-0 z-20 shadow-2xs">
-      {/* Left Container: City and Region */}
+    <header className="h-16 bg-[#FBF9F4] border-b border-[#E7DED0] px-6 flex items-center justify-between sticky top-0 z-20 shadow-2xs">
+      {/* Left: City & Region Selector */}
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl text-xs font-semibold text-[#172033]">
-          <MapPin className="w-3.5 h-3.5 text-[#18B6A4]" />
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl text-xs font-semibold text-[#252321]">
+          <MapPin className="w-3.5 h-3.5 text-[#B86B45]" />
           <span>Pune Municipal Region</span>
-          <span className="text-[10px] text-[#617080] font-normal border-l border-[#DCE4E8] pl-2">
+          <span className="text-[10px] text-[#6F6961] font-normal border-l border-[#E7DED0] pl-2">
             PMC & PCMC
           </span>
         </div>
 
         {/* Forecast Update Status */}
-        <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl text-xs text-[#617080]">
-          <Clock className="w-3.5 h-3.5 text-[#617080]" />
+        <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl text-xs text-[#6F6961]">
+          <Clock className="w-3.5 h-3.5 text-[#A98245]" />
           <span>Forecast updated 14 min ago</span>
         </div>
       </div>
 
-      {/* Center Container: System Status & Live Operational Indicator */}
+      {/* Center: Operational Status */}
       <div className="hidden md:flex items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-medium text-emerald-800">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-[#8E9274]/15 border border-[#8E9274]/35 rounded-xl text-xs font-semibold text-[#4E523A]">
+          <span className="w-2 h-2 rounded-full bg-[#8E9274] animate-pulse" />
           <span>Systems Operational</span>
         </div>
 
-        {/* Demo Indicator */}
-        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-lg text-[11px] font-bold text-amber-800">
-          <Sparkles className="w-3 h-3 text-amber-600" />
+        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#C59A4A]/15 border border-[#C59A4A]/30 rounded-lg text-[11px] font-bold text-[#8E6A26]">
+          <Sparkles className="w-3 h-3 text-[#B86B45]" />
           <span>HACKATHON DEMO</span>
         </div>
       </div>
 
-      {/* Right Container: Scenario Switcher + Roles + Profile */}
+      {/* Right: Scenario Switcher + User Profile */}
       <div className="flex items-center gap-3">
         {/* Scenario Switcher Dropdown */}
         <div className="relative">
@@ -82,8 +77,8 @@ export const Topbar: React.FC = () => {
           </button>
 
           {showScenarioMenu && (
-            <div className="absolute right-0 mt-2 w-64 bg-white border border-[#DCE4E8] rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1">
-              <div className="px-3 py-1.5 text-[10px] font-bold uppercase text-[#617080] border-b border-[#DCE4E8]">
+            <div className="absolute right-0 mt-2 w-64 bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1">
+              <div className="px-3 py-1.5 text-[10px] font-bold uppercase text-[#6F6961] border-b border-[#E7DED0]">
                 Simulate Climate Scenarios
               </div>
               {(['normal', 'heatwave', 'extreme'] as ScenarioType[]).map((scKey) => (
@@ -93,45 +88,45 @@ export const Topbar: React.FC = () => {
                     setScenario(scKey);
                     setShowScenarioMenu(false);
                   }}
-                  className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#F4F7F8] transition-colors ${
-                    scenario === scKey ? 'bg-[#18B6A4]/10 font-bold text-[#12263A]' : 'text-[#172033]'
+                  className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#F5F1E8] transition-colors cursor-pointer ${
+                    scenario === scKey ? 'bg-[#B86B45]/15 font-bold text-[#252321]' : 'text-[#252321]'
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${scKey === 'extreme' ? 'bg-[#D9534F]' : scKey === 'heatwave' ? 'bg-[#EF8069]' : 'bg-[#18B6A4]'}`} />
+                    <span className={`w-2 h-2 rounded-full ${scKey === 'extreme' ? 'bg-[#9F4937]' : scKey === 'heatwave' ? 'bg-[#C9674B]' : 'bg-[#C59A4A]'}`} />
                     <span>{scenarioLabels[scKey].label}</span>
                   </div>
-                  <span className="text-[10px] text-[#617080] font-mono">{scenarioLabels[scKey].badge}</span>
+                  <span className="text-[10px] text-[#6F6961] font-mono">{scenarioLabels[scKey].badge}</span>
                 </button>
               ))}
             </div>
           )}
         </div>
 
-        {/* User Role Switcher Dropdown */}
+        {/* User Role Switcher */}
         <div className="relative">
           <button
             onClick={() => setShowRoleMenu(!showRoleMenu)}
-            className="flex items-center gap-2.5 px-3 py-1.5 bg-[#F4F7F8] hover:bg-[#EAEFF2] border border-[#DCE4E8] rounded-xl text-xs text-[#172033] transition-colors cursor-pointer"
+            className="flex items-center gap-2.5 px-3 py-1.5 bg-[#F5F1E8] hover:bg-[#EAE2D5] border border-[#E7DED0] rounded-xl text-xs text-[#252321] transition-colors cursor-pointer"
           >
-            <div className="w-6 h-6 rounded-lg bg-[#12263A] text-white flex items-center justify-center font-bold text-[10px]">
+            <div className="w-6 h-6 rounded-lg bg-[#B86B45] text-[#FBF9F4] flex items-center justify-center font-bold text-[10px]">
               {user?.full_name?.charAt(0) || 'U'}
             </div>
             <div className="text-left hidden sm:block">
               <div className="font-semibold text-xs leading-none">{user?.full_name}</div>
-              <div className="text-[10px] text-[#617080] font-medium leading-none mt-0.5">{role.replace('_', ' ')}</div>
+              <div className="text-[10px] text-[#6F6961] font-medium leading-none mt-0.5">{role.replace('_', ' ')}</div>
             </div>
-            <ChevronDown className="w-3.5 h-3.5 text-[#617080]" />
+            <ChevronDown className="w-3.5 h-3.5 text-[#6F6961]" />
           </button>
 
           {showRoleMenu && (
-            <div className="absolute right-0 mt-2 w-72 bg-white border border-[#DCE4E8] rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1">
-              <div className="px-3.5 py-2 border-b border-[#DCE4E8]">
-                <p className="text-xs font-bold text-[#172033]">{user?.full_name}</p>
-                <p className="text-[11px] text-[#617080]">{user?.department}</p>
+            <div className="absolute right-0 mt-2 w-72 bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1">
+              <div className="px-3.5 py-2 border-b border-[#E7DED0]">
+                <p className="text-xs font-bold text-[#252321]">{user?.full_name}</p>
+                <p className="text-[11px] text-[#6F6961]">{user?.department}</p>
               </div>
 
-              <div className="px-3.5 py-1.5 text-[10px] font-bold uppercase text-[#617080] mt-1">
+              <div className="px-3.5 py-1.5 text-[10px] font-bold uppercase text-[#6F6961] mt-1">
                 Switch Operational Persona
               </div>
               {rolesList.map((r) => (
@@ -141,22 +136,22 @@ export const Topbar: React.FC = () => {
                     switchRole(r.role);
                     setShowRoleMenu(false);
                   }}
-                  className={`w-full text-left px-3.5 py-2 text-xs flex flex-col hover:bg-[#F4F7F8] transition-colors ${
-                    role === r.role ? 'bg-[#18B6A4]/10 text-[#12263A] font-bold' : 'text-[#172033]'
+                  className={`w-full text-left px-3.5 py-2 text-xs flex flex-col hover:bg-[#F5F1E8] transition-colors cursor-pointer ${
+                    role === r.role ? 'bg-[#B86B45]/15 text-[#252321] font-bold' : 'text-[#252321]'
                   }`}
                 >
                   <span className="font-semibold">{r.title}</span>
-                  <span className="text-[10px] text-[#617080]">{r.dept}</span>
+                  <span className="text-[10px] text-[#6F6961]">{r.dept}</span>
                 </button>
               ))}
 
-              <div className="mt-2 pt-2 border-t border-[#DCE4E8] px-3.5">
+              <div className="mt-2 pt-2 border-t border-[#E7DED0] px-3.5">
                 <button
                   onClick={() => {
                     logout();
                     setShowRoleMenu(false);
                   }}
-                  className="w-full text-left text-xs font-semibold text-[#D9534F] py-1 hover:underline cursor-pointer"
+                  className="w-full text-left text-xs font-semibold text-[#9F4937] py-1 hover:underline cursor-pointer"
                 >
                   Sign Out
                 </button>

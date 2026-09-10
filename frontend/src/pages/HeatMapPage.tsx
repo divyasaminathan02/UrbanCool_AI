@@ -90,25 +90,27 @@ export const HeatMapPage: React.FC = () => {
       {/* Page Title & Status Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#12263A] tracking-tight flex items-center gap-2">
-            <span>Hyper-Local Heat Map GIS</span>
-            <span className="text-xs font-bold px-2 py-0.5 bg-[#18B6A4]/15 text-[#0D8F82] border border-[#18B6A4]/30 rounded-md">
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-extrabold text-[#252321] tracking-tight">
+              Hyper-Local Heat Map GIS
+            </h1>
+            <span className="text-[11px] font-bold px-2 py-0.5 bg-[#B86B45]/10 text-[#B86B45] border border-[#B86B45]/25 rounded-md uppercase tracking-wider">
               250m Downscaled
             </span>
-          </h1>
-          <p className="text-xs text-[#617080] mt-0.5">
+          </div>
+          <p className="text-xs text-[#6F6961] mt-0.5">
             Multi-layer urban thermal canopy downscaling across Pune Municipal Corporation
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-xs">
-          <div className="px-3 py-1.5 bg-white border border-[#DCE4E8] rounded-xl font-medium text-[#172033]">
-            <span className="text-[#617080]">Active Grid Cells:</span>{' '}
-            <span className="font-bold text-[#12263A]">{geoData?.total_cells || 0}</span>
+          <div className="px-3 py-1.5 bg-[#FBF9F4] border border-[#E7DED0] rounded-xl font-medium text-[#252321]">
+            <span className="text-[#6F6961]">Active Grid Cells:</span>{' '}
+            <span className="font-bold text-[#B86B45]">{geoData?.total_cells || 0}</span>
           </div>
           <button
             onClick={resetFilters}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-bold text-[#617080] hover:text-[#172033] transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FBF9F4] hover:bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-semibold text-[#6F6961] hover:text-[#252321] transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset Filters</span>
@@ -119,17 +121,17 @@ export const HeatMapPage: React.FC = () => {
       {/* Main 3-Column Layout: Left Filters + Center Map + Right Intelligence Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         {/* Left Filter Panel (3 cols) */}
-        <div className="lg:col-span-3 bg-white border border-[#DCE4E8] rounded-2xl p-4 shadow-xs space-y-4">
-          <div className="flex items-center justify-between border-b border-[#DCE4E8] pb-2.5">
-            <span className="text-xs font-bold text-[#12263A] uppercase tracking-wider flex items-center gap-1.5">
-              <Filter className="w-3.5 h-3.5 text-[#18B6A4]" />
+        <div className="lg:col-span-3 bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-4 shadow-xs space-y-4">
+          <div className="flex items-center justify-between border-b border-[#E7DED0] pb-2.5">
+            <span className="text-xs font-bold text-[#252321] uppercase tracking-wider flex items-center gap-1.5">
+              <Filter className="w-3.5 h-3.5 text-[#B86B45]" />
               GIS Layer Filters
             </span>
           </div>
 
           {/* Forecast Horizon */}
           <div>
-            <label className="block text-[11px] font-bold text-[#617080] uppercase tracking-wider mb-1.5">
+            <label className="block text-[10px] font-bold text-[#6F6961] uppercase tracking-wider mb-1.5">
               Forecast Horizon
             </label>
             <div className="grid grid-cols-2 gap-1.5">
@@ -137,8 +139,8 @@ export const HeatMapPage: React.FC = () => {
                 onClick={() => setHorizon(24)}
                 className={`py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
                   horizon === 24
-                    ? 'bg-[#12263A] text-white border-[#12263A]'
-                    : 'bg-[#F4F7F8] text-[#617080] border-[#DCE4E8] hover:bg-[#EAEFF2]'
+                    ? 'bg-[#B86B45] text-white border-[#B86B45]'
+                    : 'bg-[#F5F1E8] text-[#6F6961] border-[#E7DED0] hover:bg-[#EAE0D0]'
                 }`}
               >
                 24 Hours
@@ -147,8 +149,8 @@ export const HeatMapPage: React.FC = () => {
                 onClick={() => setHorizon(48)}
                 className={`py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
                   horizon === 48
-                    ? 'bg-[#12263A] text-white border-[#12263A]'
-                    : 'bg-[#F4F7F8] text-[#617080] border-[#DCE4E8] hover:bg-[#EAEFF2]'
+                    ? 'bg-[#B86B45] text-white border-[#B86B45]'
+                    : 'bg-[#F5F1E8] text-[#6F6961] border-[#E7DED0] hover:bg-[#EAE0D0]'
                 }`}
               >
                 48 Hours
@@ -158,23 +160,23 @@ export const HeatMapPage: React.FC = () => {
 
           {/* Risk Severity Filter */}
           <div>
-            <label className="block text-[11px] font-bold text-[#617080] uppercase tracking-wider mb-1.5">
+            <label className="block text-[10px] font-bold text-[#6F6961] uppercase tracking-wider mb-1.5">
               Heat Risk Severity
             </label>
             <div className="space-y-1">
               {[
                 { id: 'all', label: 'All Risk Levels' },
-                { id: 'high_plus', label: 'High+ (&ge; 60)' },
-                { id: 'very_high_plus', label: 'Very High+ (&ge; 80)' },
-                { id: 'extreme', label: 'Extreme Only (&ge; 90)' },
+                { id: 'high_plus', label: 'High+ (≥ 60)' },
+                { id: 'very_high_plus', label: 'Very High+ (≥ 80)' },
+                { id: 'extreme', label: 'Extreme Only (≥ 90)' },
               ].map((rf) => (
                 <button
                   key={rf.id}
                   onClick={() => setRiskFilter(rf.id)}
                   className={`w-full text-left px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
                     riskFilter === rf.id
-                      ? 'bg-[#18B6A4]/15 border-[#18B6A4] text-[#12263A] font-bold'
-                      : 'bg-[#F4F7F8] border-[#DCE4E8] text-[#617080] hover:bg-[#EAEFF2]'
+                      ? 'bg-[#B86B45]/15 border-[#B86B45] text-[#252321] font-bold'
+                      : 'bg-[#F5F1E8] border-[#E7DED0] text-[#6F6961] hover:bg-[#EAE0D0]'
                   }`}
                 >
                   {rf.label}
@@ -185,7 +187,7 @@ export const HeatMapPage: React.FC = () => {
 
           {/* Population Exposure Filter */}
           <div>
-            <label className="block text-[11px] font-bold text-[#617080] uppercase tracking-wider mb-1.5">
+            <label className="block text-[10px] font-bold text-[#6F6961] uppercase tracking-wider mb-1.5">
               Population Exposure
             </label>
             <div className="grid grid-cols-2 gap-1.5">
@@ -193,8 +195,8 @@ export const HeatMapPage: React.FC = () => {
                 onClick={() => setPopFilter('all')}
                 className={`py-1.5 text-xs font-medium rounded-xl border transition-all cursor-pointer ${
                   popFilter === 'all'
-                    ? 'bg-[#18B6A4]/15 border-[#18B6A4] text-[#12263A] font-bold'
-                    : 'bg-[#F4F7F8] border-[#DCE4E8] text-[#617080] hover:bg-[#EAEFF2]'
+                    ? 'bg-[#B86B45]/15 border-[#B86B45] text-[#252321] font-bold'
+                    : 'bg-[#F5F1E8] border-[#E7DED0] text-[#6F6961] hover:bg-[#EAE0D0]'
                 }`}
               >
                 All
@@ -203,18 +205,18 @@ export const HeatMapPage: React.FC = () => {
                 onClick={() => setPopFilter('high_exposure')}
                 className={`py-1.5 text-xs font-medium rounded-xl border transition-all cursor-pointer ${
                   popFilter === 'high_exposure'
-                    ? 'bg-[#18B6A4]/15 border-[#18B6A4] text-[#12263A] font-bold'
-                    : 'bg-[#F4F7F8] border-[#DCE4E8] text-[#617080] hover:bg-[#EAEFF2]'
+                    ? 'bg-[#B86B45]/15 border-[#B86B45] text-[#252321] font-bold'
+                    : 'bg-[#F5F1E8] border-[#E7DED0] text-[#6F6961] hover:bg-[#EAE0D0]'
                 }`}
               >
-                High (&ge; 20k)
+                High (≥ 20k)
               </button>
             </div>
           </div>
 
           {/* Vegetation / NDVI Filter */}
           <div>
-            <label className="block text-[11px] font-bold text-[#617080] uppercase tracking-wider mb-1.5">
+            <label className="block text-[10px] font-bold text-[#6F6961] uppercase tracking-wider mb-1.5">
               Vegetation / NDVI
             </label>
             <div className="grid grid-cols-3 gap-1">
@@ -228,8 +230,8 @@ export const HeatMapPage: React.FC = () => {
                   onClick={() => setNdviFilter(nf.id)}
                   className={`py-1.5 text-[11px] font-medium rounded-xl border transition-all cursor-pointer ${
                     ndviFilter === nf.id
-                      ? 'bg-[#18B6A4]/15 border-[#18B6A4] text-[#12263A] font-bold'
-                      : 'bg-[#F4F7F8] border-[#DCE4E8] text-[#617080] hover:bg-[#EAEFF2]'
+                      ? 'bg-[#B86B45]/15 border-[#B86B45] text-[#252321] font-bold'
+                      : 'bg-[#F5F1E8] border-[#E7DED0] text-[#6F6961] hover:bg-[#EAE0D0]'
                   }`}
                 >
                   {nf.label}
@@ -240,7 +242,7 @@ export const HeatMapPage: React.FC = () => {
 
           {/* Active Overlay Layer Switcher */}
           <div>
-            <label className="block text-[11px] font-bold text-[#617080] uppercase tracking-wider mb-1.5">
+            <label className="block text-[10px] font-bold text-[#6F6961] uppercase tracking-wider mb-1.5">
               Primary Map Layer
             </label>
             <div className="space-y-1">
@@ -259,8 +261,8 @@ export const HeatMapPage: React.FC = () => {
                     onClick={() => setActiveLayer(l.id as MapLayerType)}
                     className={`w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 border transition-all cursor-pointer ${
                       activeLayer === l.id
-                        ? 'bg-[#12263A] text-white border-[#12263A] font-bold'
-                        : 'bg-[#F4F7F8] border-[#DCE4E8] text-[#617080] hover:bg-[#EAEFF2]'
+                        ? 'bg-[#B86B45] text-white border-[#B86B45] font-bold shadow-xs'
+                        : 'bg-[#F5F1E8] border-[#E7DED0] text-[#6F6961] hover:bg-[#EAE0D0]'
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -272,8 +274,8 @@ export const HeatMapPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Center GIS Map (6 cols) */}
-        <div className="lg:col-span-5 bg-white border border-[#DCE4E8] rounded-2xl p-3 shadow-xs">
+        {/* Center GIS Map (5 cols) */}
+        <div className="lg:col-span-5 bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-3 shadow-xs">
           {geoData && (
             <HeatMapLeaflet
               features={geoData.features}
@@ -297,10 +299,10 @@ export const HeatMapPage: React.FC = () => {
               onDispatchTanker={handleDispatchTanker}
             />
           ) : (
-            <div className="bg-white border border-[#DCE4E8] rounded-2xl p-8 text-center text-[#617080] shadow-xs">
-              <Info className="w-10 h-10 text-[#18B6A4] mx-auto mb-3 opacity-60" />
-              <h3 className="text-sm font-bold text-[#12263A]">No Grid Cell Selected</h3>
-              <p className="text-xs text-[#617080] mt-1">
+            <div className="bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-8 text-center text-[#6F6961] shadow-xs">
+              <Info className="w-10 h-10 text-[#B86B45] mx-auto mb-3 opacity-60" />
+              <h3 className="text-sm font-bold text-[#252321]">No Grid Cell Selected</h3>
+              <p className="text-xs text-[#6F6961] mt-1">
                 Click any polygon on the GIS map to view localized downscaling drivers, temperature anomalies, and municipal action advisories.
               </p>
             </div>
@@ -310,3 +312,4 @@ export const HeatMapPage: React.FC = () => {
     </div>
   );
 };
+

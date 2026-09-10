@@ -11,12 +11,9 @@ import {
   BellRing,
   TreePine,
   Zap,
-  Users,
-  Filter,
   CheckCircle2,
   Clock,
-  ArrowRight,
-  ShieldCheck
+  ArrowRight
 } from 'lucide-react';
 
 export const RecommendationsPage: React.FC = () => {
@@ -76,11 +73,15 @@ export const RecommendationsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#12263A] tracking-tight flex items-center gap-2">
-            <CheckSquare className="w-6 h-6 text-[#18B6A4]" />
-            <span>Municipal Action Advisories</span>
-          </h1>
-          <p className="text-xs text-[#617080] mt-0.5">
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-extrabold text-[#252321] tracking-tight">
+              Municipal Action Advisories
+            </h1>
+            <span className="text-[11px] font-bold px-2 py-0.5 bg-[#B86B45]/10 text-[#B86B45] border border-[#B86B45]/25 rounded-md uppercase tracking-wider">
+              Rule Engine
+            </span>
+          </div>
+          <p className="text-xs text-[#6F6961] mt-0.5">
             Deterministic rule-engine recommendations prioritized by thermal risk, population exposure and canopy deficit
           </p>
         </div>
@@ -88,23 +89,23 @@ export const RecommendationsPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate('/interventions')}
-            className="px-4 py-2 bg-[#12263A] hover:bg-[#1B344D] text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
+            className="px-4 py-2 bg-[#B86B45] hover:bg-[#925238] text-white rounded-xl text-xs font-bold transition-all shadow-xs flex items-center gap-2 cursor-pointer"
           >
             <span>Open Operational Dispatch</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#18B6A4]" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#F5F1E8]" />
           </button>
         </div>
       </div>
 
       {actionSuccess && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-bold text-emerald-800 flex items-center gap-2 animate-in fade-in">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+        <div className="p-3 bg-[#8E9274]/15 border border-[#8E9274]/30 rounded-xl text-xs font-bold text-[#252321] flex items-center gap-2 animate-in fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#8E9274]" />
           <span>{actionSuccess}</span>
         </div>
       )}
 
       {/* Category Pills & Filters */}
-      <div className="bg-white border border-[#DCE4E8] rounded-2xl p-4 shadow-xs space-y-3">
+      <div className="bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-4 shadow-xs space-y-3">
         {/* Category Pills */}
         <div className="flex items-center gap-2 overflow-x-auto pb-1">
           {categories.map((cat) => {
@@ -115,11 +116,11 @@ export const RecommendationsPage: React.FC = () => {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-[#12263A] text-white shadow-xs'
-                    : 'bg-[#F4F7F8] text-[#617080] hover:bg-[#EAEFF2]'
+                    ? 'bg-[#B86B45] text-white shadow-xs'
+                    : 'bg-[#F5F1E8] text-[#6F6961] hover:bg-[#EAE0D0] hover:text-[#252321]'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${selectedCategory === cat.id ? 'text-[#18B6A4]' : 'text-[#8EA7B8]'}`} />
+                <Icon className={`w-3.5 h-3.5 ${selectedCategory === cat.id ? 'text-[#F5F1E8]' : 'text-[#6F6961]'}`} />
                 <span>{cat.label}</span>
               </button>
             );
@@ -127,14 +128,14 @@ export const RecommendationsPage: React.FC = () => {
         </div>
 
         {/* Priority & Status dropdowns */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-[#DCE4E8]/60 text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-[#E7DED0] text-xs">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-[#617080] uppercase tracking-wider text-[11px]">Priority:</span>
+              <span className="font-bold text-[#6F6961] uppercase tracking-wider text-[10px]">Priority:</span>
               <select
                 value={selectedPriority}
                 onChange={(e) => setSelectedPriority(e.target.value)}
-                className="px-3 py-1 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-medium text-[#172033] focus:outline-hidden cursor-pointer"
+                className="px-3 py-1 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-semibold text-[#252321] focus:outline-hidden focus:border-[#B86B45] cursor-pointer"
               >
                 <option value="All">All Priorities</option>
                 <option value="CRITICAL">Critical Only</option>
@@ -145,11 +146,11 @@ export const RecommendationsPage: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="font-bold text-[#617080] uppercase tracking-wider text-[11px]">Status:</span>
+              <span className="font-bold text-[#6F6961] uppercase tracking-wider text-[10px]">Status:</span>
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-3 py-1 bg-[#F4F7F8] border border-[#DCE4E8] rounded-xl font-medium text-[#172033] focus:outline-hidden cursor-pointer"
+                className="px-3 py-1 bg-[#F5F1E8] border border-[#E7DED0] rounded-xl font-semibold text-[#252321] focus:outline-hidden focus:border-[#B86B45] cursor-pointer"
               >
                 <option value="All">All Statuses</option>
                 <option value="NEW">New</option>
@@ -161,8 +162,8 @@ export const RecommendationsPage: React.FC = () => {
             </div>
           </div>
 
-          <span className="text-[#617080] font-medium">
-            Showing <b className="text-[#172033]">{recommendations.length}</b> actionable advisories
+          <span className="text-[#6F6961] font-medium">
+            Showing <b className="text-[#252321]">{recommendations.length}</b> actionable advisories
           </span>
         </div>
       </div>
@@ -172,14 +173,14 @@ export const RecommendationsPage: React.FC = () => {
         {recommendations.map((rec) => (
           <div
             key={rec.id}
-            className="bg-white border border-[#DCE4E8] rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+            className="bg-[#FBF9F4] border border-[#E7DED0] rounded-2xl p-5 shadow-xs hover:border-[#B86B45] transition-all flex flex-col justify-between"
           >
             <div>
               {/* Header: Priority + Category + Status */}
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2">
                   <StatusBadge status={rec.priority} type="priority" size="sm" />
-                  <span className="text-xs font-bold text-[#18B6A4] px-2 py-0.5 bg-[#18B6A4]/10 rounded-md">
+                  <span className="text-xs font-bold text-[#B86B45] px-2 py-0.5 bg-[#B86B45]/10 rounded-md border border-[#B86B45]/20">
                     {rec.category}
                   </span>
                 </div>
@@ -187,33 +188,33 @@ export const RecommendationsPage: React.FC = () => {
               </div>
 
               {/* Title & Location */}
-              <h3 className="font-extrabold text-sm text-[#12263A] leading-snug mt-2">
+              <h3 className="font-extrabold text-sm text-[#252321] leading-snug mt-2">
                 {rec.action_title}
               </h3>
-              <p className="text-xs text-[#0D8F82] font-semibold mt-0.5">
+              <p className="text-xs text-[#B86B45] font-semibold mt-0.5">
                 {rec.zone_name} • Ward {rec.ward_name} ({rec.zone_id})
               </p>
 
               {/* Description / Reason */}
-              <p className="text-xs text-[#617080] mt-2 leading-relaxed">
+              <p className="text-xs text-[#6F6961] mt-2 leading-relaxed">
                 {rec.description}
               </p>
 
               {/* Impact Callout */}
-              <div className="mt-3 p-3 bg-[#F4F7F8] rounded-xl border border-[#DCE4E8] text-xs">
-                <span className="font-bold text-[#172033] block mb-0.5">Expected Municipal Impact:</span>
-                <span className="text-[#0D8F82] font-medium">{rec.expected_impact}</span>
+              <div className="mt-3 p-3 bg-[#F5F1E8] rounded-xl border border-[#E7DED0] text-xs">
+                <span className="font-bold text-[#252321] block mb-0.5">Expected Municipal Impact:</span>
+                <span className="text-[#8E9274] font-semibold">{rec.expected_impact}</span>
               </div>
 
               {/* Department & Deadline */}
-              <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-[#617080]">
+              <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-[#6F6961]">
                 <div>
-                  <span className="block font-medium">Assigned To:</span>
-                  <span className="text-[#172033] font-semibold truncate block">{rec.assigned_department}</span>
+                  <span className="block font-medium text-[#6F6961]">Assigned To:</span>
+                  <span className="text-[#252321] font-semibold truncate block">{rec.assigned_department}</span>
                 </div>
                 <div>
-                  <span className="block font-medium">Operational Window:</span>
-                  <span className="text-[#D9534F] font-semibold truncate block flex items-center gap-1">
+                  <span className="block font-medium text-[#6F6961]">Operational Window:</span>
+                  <span className="text-[#9F4937] font-semibold truncate block flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     {rec.deadline_text}
                   </span>
@@ -222,8 +223,8 @@ export const RecommendationsPage: React.FC = () => {
             </div>
 
             {/* Status Change Interactive Buttons */}
-            <div className="mt-4 pt-3 border-t border-[#DCE4E8] flex items-center justify-between gap-2">
-              <span className="text-[10px] font-bold text-[#617080] uppercase tracking-wider">Update Status:</span>
+            <div className="mt-4 pt-3 border-t border-[#E7DED0] flex items-center justify-between gap-2">
+              <span className="text-[10px] font-bold text-[#6F6961] uppercase tracking-wider">Update Status:</span>
               <div className="flex items-center gap-1.5 overflow-x-auto">
                 {['ACKNOWLEDGED', 'DISPATCHED', 'IN PROGRESS', 'RESOLVED'].map((st) => (
                   <button
@@ -232,8 +233,8 @@ export const RecommendationsPage: React.FC = () => {
                     disabled={rec.status === st}
                     className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer disabled:opacity-40 ${
                       rec.status === st
-                        ? 'bg-[#12263A] text-white'
-                        : 'bg-[#F4F7F8] hover:bg-[#EAEFF2] text-[#617080] border border-[#DCE4E8]'
+                        ? 'bg-[#B86B45] text-white'
+                        : 'bg-[#F5F1E8] hover:bg-[#EAE0D0] text-[#6F6961] border border-[#E7DED0]'
                     }`}
                   >
                     {st}
@@ -247,3 +248,4 @@ export const RecommendationsPage: React.FC = () => {
     </div>
   );
 };
+

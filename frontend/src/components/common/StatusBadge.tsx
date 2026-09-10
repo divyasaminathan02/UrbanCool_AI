@@ -12,18 +12,18 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   size = 'md',
 }) => {
   const getStyles = () => {
-    // Priority styles
+    // Priority styles (Copper / Terracotta / Warm Gold / Sand)
     if (type === 'priority') {
       switch (status) {
         case 'CRITICAL':
-          return 'bg-[#D9534F]/15 text-[#D9534F] border-[#D9534F]/30';
+          return 'bg-[#9F4937]/15 text-[#9F4937] border-[#9F4937]/35 font-extrabold';
         case 'HIGH':
-          return 'bg-[#EF8069]/15 text-[#C9543C] border-[#EF8069]/30';
+          return 'bg-[#C9674B]/15 text-[#A0462C] border-[#C9674B]/35 font-bold';
         case 'MEDIUM':
-          return 'bg-[#F4B942]/15 text-[#B88114] border-[#F4B942]/30';
+          return 'bg-[#C59A4A]/15 text-[#8E6A26] border-[#C59A4A]/35 font-semibold';
         case 'LOW':
         default:
-          return 'bg-[#18B6A4]/15 text-[#0D8F82] border-[#18B6A4]/30';
+          return 'bg-[#8E9274]/15 text-[#5F6348] border-[#8E9274]/30 font-medium';
       }
     }
 
@@ -31,33 +31,33 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
     if (type === 'source') {
       switch (status) {
         case 'LIVE':
-          return 'bg-[#18B6A4]/15 text-[#0D8F82] border-[#18B6A4]/40 font-semibold';
+          return 'bg-[#B86B45]/15 text-[#925238] border-[#B86B45]/40 font-bold';
         case 'OPEN DATA':
-          return 'bg-[#1B344D]/10 text-[#1B344D] border-[#1B344D]/20 font-medium';
+          return 'bg-[#252321]/10 text-[#252321] border-[#252321]/20 font-semibold';
         case 'DEMO DATA':
         default:
-          return 'bg-[#F4B942]/15 text-[#B88114] border-[#F4B942]/40 font-medium';
+          return 'bg-[#C59A4A]/15 text-[#8E6A26] border-[#C59A4A]/40 font-medium';
       }
     }
 
-    // Default Operational Workflow Statuses
+    // Operational Workflow Statuses (Warm refined neutrals & copper)
     switch (status) {
       case 'NEW':
-        return 'bg-blue-50 text-blue-700 border-blue-200';
+        return 'bg-[#F5F1E8] text-[#6F6961] border-[#E7DED0]';
       case 'ACKNOWLEDGED':
-        return 'bg-purple-50 text-purple-700 border-purple-200';
+        return 'bg-[#C59A4A]/10 text-[#8E6A26] border-[#C59A4A]/30 font-medium';
       case 'DISPATCHED':
-        return 'bg-amber-50 text-amber-800 border-amber-300 font-semibold';
+        return 'bg-[#B86B45]/15 text-[#925238] border-[#B86B45]/40 font-bold';
       case 'IN PROGRESS':
-        return 'bg-teal-50 text-teal-800 border-teal-300 font-semibold';
+        return 'bg-[#C59A4A]/20 text-[#7D5A1B] border-[#C59A4A]/50 font-bold';
       case 'RESOLVED':
-        return 'bg-emerald-50 text-emerald-800 border-emerald-300';
+        return 'bg-[#8E9274]/20 text-[#4E523A] border-[#8E9274]/40 font-semibold';
       case 'ACTIVE':
-        return 'bg-rose-50 text-rose-700 border-rose-300';
+        return 'bg-[#C9674B]/15 text-[#A0462C] border-[#C9674B]/35 font-bold';
       case 'BROADCASTED':
-        return 'bg-indigo-50 text-indigo-700 border-indigo-300';
+        return 'bg-[#252321] text-[#FBF9F4] border-[#252321] font-bold';
       default:
-        return 'bg-gray-100 text-gray-700 border-gray-200';
+        return 'bg-[#F5F1E8] text-[#6F6961] border-[#E7DED0]';
     }
   };
 
@@ -65,7 +65,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 border rounded-lg uppercase tracking-wider font-semibold ${getStyles()} ${sizeClass}`}
+      className={`inline-flex items-center gap-1.5 border rounded-lg uppercase tracking-wider ${getStyles()} ${sizeClass}`}
     >
       {status}
     </span>
