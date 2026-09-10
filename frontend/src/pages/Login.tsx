@@ -84,7 +84,7 @@ export const Login: React.FC = () => {
 
         <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 bg-[#FBF9F4] border border-[#E7DED0] rounded-xl text-[#B86B45] shadow-2xs">
           <Building2 className="w-4 h-4" />
-          <span>PCCOE Indradhanu Grand Challenge 2026</span>
+          <span>Municipal Geospatial Intelligence Platform</span>
         </div>
       </div>
 
@@ -215,7 +215,7 @@ export const Login: React.FC = () => {
       {/* Footer */}
       <div className="max-w-6xl w-full mx-auto flex items-center justify-between text-[11px] text-[#6F6961] border-t border-[#E7DED0] pt-4 z-10">
         <div>UrbanCool AI — Pune Municipal Climate Intelligence System</div>
-        <div>Built for Indradhanu Grand Challenge 2026</div>
+        <div>Continuous Geospatial ML Telemetry</div>
       </div>
     </div>
   );

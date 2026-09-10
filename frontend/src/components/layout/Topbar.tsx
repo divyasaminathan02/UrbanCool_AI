@@ -57,9 +57,9 @@ export const Topbar: React.FC = () => {
           <span>Systems Operational</span>
         </div>
 
-        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#C59A4A]/15 border border-[#C59A4A]/30 rounded-lg text-[11px] font-bold text-[#8E6A26]">
-          <Sparkles className="w-3 h-3 text-[#B86B45]" />
-          <span>HACKATHON DEMO</span>
+        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#F5F1E8] border border-[#E7DED0] rounded-lg text-[11px] font-medium text-[#6F6961]">
+          <Activity className="w-3 h-3 text-[#B86B45]" />
+          <span>250m Downscaling Active</span>
         </div>
       </div>
 

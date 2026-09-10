@@ -129,8 +129,8 @@ export const Sidebar: React.FC = () => {
       <div className="p-3.5 border-t border-[#3A3532] bg-[#1C1A18]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#B86B45]" />
-            <span className="text-[11px] font-semibold text-[#D5C9B8]">Indradhanu 2026</span>
+            <span className="w-2 h-2 rounded-full bg-[#B86B45]" />
+            <span className="text-[11px] font-semibold text-[#D5C9B8]">Enterprise v2.4</span>
           </div>
           <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#252321] text-[#C59A4A] rounded border border-[#C59A4A]/30">
             SDG 13 • 11 • 3
