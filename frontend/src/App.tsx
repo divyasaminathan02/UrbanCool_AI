@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ScenarioProvider } from './context/ScenarioContext';
 import { Layout } from './components/layout/Layout';
@@ -18,7 +18,7 @@ import { SettingsPage } from './pages/SettingsPage';
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <ScenarioProvider>
           <Routes>
@@ -43,7 +43,7 @@ export const App: React.FC = () => {
           </Routes>
         </ScenarioProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

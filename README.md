@@ -8,6 +8,7 @@
 [![UN SDG 3: Good Health](https://img.shields.io/badge/UN%20SDG%203-Good%20Health-red?style=flat-square)](https://sdgs.un.org/goals/goal3)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20%7C%20Python%203.11-12263A?style=flat-square)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/Frontend-React%2019%20%7C%20TypeScript%20%7C%20Vite-18B6A4?style=flat-square)](https://vitejs.dev)
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20on%20GitHub%20Pages-00B4D8?style=flat-square&logo=githubpages)](https://divyasaminathan02.github.io/UrbanCool_AI/)
 
 ---
 
